@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items:center;
+        }
+        .element_container{
+            width: 50vw;
+            height: 20vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 auto;
+            background-color: red;
+        }
+        .element_container div{
+            width: 10vw;
+            height: 10vw;
+            background-color:blue;
+            color: white;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items:center;
+        }
+        .info_container{
+            width: 50vw;
+            margin: 0 auto;
+        }
+        p{
+            font-size: 30px;
+        }
+        span{
+            color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="element_container">
+        <div class="el1">1</div>
+        <div class="el2">2</div>
+        <div class="el3">3</div>
+    </div>
+    <div class="info_container">
+        <p>Имя события <span id="name"></span></p>
+        <p>Куда пришёл <span id="targetElement"></span></p>
+        <p>откуда пришёл <span id="relaredTargetElement"></span></p>
+
+    </div>
+    <script>
+        let els =document.querySelectorAll('.element_container div');
+        let name =document.querySelector('#name');
+        let targetEl = document.querySelector('#targetElement');
+        let relatedTargetEl =document.querySelector('#relaredTargetElement');
+        for (let el of els) {
+            el.addEventListener('mouseover',showText);
+            el.addEventListener('mouseout',showText);
+        }
+        function showText(){
+            console.log(event)
+            name.innerText = event.type;
+            targetEl.innerText = event.target.className;
+            if(event.relatedTarget.classList.contains('element_container')){
+relatedTargetEl.innerText=event.relatedTarget.className;
+            }else{
+                relatedTargetEl.innerText=event.relatedTarget.id;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+        }
+        div{
+            border: 1px solid black;
+        }
+        .div1{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 15vw;
+            height: 15vw;
+        }
+        .div2{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 10vw;
+            height: 10vw;
+        }
+        .div3{
+            width: 5vw;
+            height: 5vw;
+        }
+        .brown_color{
+           transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="div1"><div class="div2"><div class="div3"></div></div></div>
+    
+    
+    <script>
+        function blockAction(){
+            event.preventDefault();
+            event.stopPropagation();
+            event.target.classList.toggle('brown_color');
+        }
+        let divs=document.querySelectorAll('div');
+        for(let item of divs){
+            item.addEventListener('click',blockAction);
+            
+        }
+    </script>
+</body>
+</html>

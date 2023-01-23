@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            overflow: hidden;
+            margin: 0;
+        }
+        .test{
+            background: url(1.jpg) no-repeat center /contain;
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            padding: 10px;
+            position: absolute;
+           
+        }
+
+    </style>
+</head>
+<body>
+    <div class="test"></div>
+    <script>
+        let isDrag= false;
+        let offsetX;
+        let offsetY;
+
+        let el= document.querySelector('.test');
+
+      
+        el.addEventListener('mousedown', function(e){
+            isDrag=true;
+            offsetX=e.pageX-parseInt(getComputedStyle(el).left);
+            offsetY=e.pageY-parseInt(getComputedStyle(el).top);
+
+        })
+        document.body.addEventListener('mouseup', function(){
+            isDrag=false;
+
+        })
+        document.body.addEventListener('mousemove', function(e){
+            if(isDrag){
+                el.style.left=  `calc(${e.pageX}px - ${offsetX}px)`;
+                el.style.top=`calc(${e.pageY}px - ${offsetY}px)`;
+            }
+
+        })
+
+    
+    </script>
+</body>
+</html>
